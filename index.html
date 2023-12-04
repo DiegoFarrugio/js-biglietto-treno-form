@@ -1,22 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Generator</title>
-<!--BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<!--CSS -->
+    <title>Calcolo del prezzo del biglietto del treno</title>
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!--CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    
-    
+    <main class="bg-danger bg-gradient">
+        <div class="container-fluid">
+            <div class="form_container">
+                <h2 class="mb-4 p-3">
+                    Calcola il prezzo del tuo biglietto - Trenitalia
+                </h2>
+                <form>
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="fullName" class="form-label fw-bold">Nome e Cognome</label>
+                            <input type="text" class="form-control" name="fullName" id="fullName"
+                                placeholder="Inserisci nome e cognome">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="km" class="form-label fw-bold">Km da percorrere</label>
+                            <input type="number" class="form-control" name="km" id="km"
+                                placeholder="Inserisci i km da percorrere">
+                        </div>
 
+                        <div class="mb-3 col-6">
+                            <label for="selectEta" class="form-label fw-bold">Fascia d'eta</label>
+                            <select class="form-select" name="selectEta" id="selectEta" required>
+                                <option selected disabled value="">Scegli</option>
+                                <option value="1">Minorenne</option>
+                                <option value="2">Maggiorenne (da 18 a 65 anni)
+                                <option value="3">Over 65</option>
+                                </option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-center p-5">
+                            <div class="me-2">
+                                <button type="submit" class="btn btn-success">Genera</button>
+                            </div>
+                            <div>
+                                <button type="reset" class="btn btn-danger">Annulla</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-<!--JAVASCRIPT-->
+            <div>
+                <h2 class="mb-2">
+                    Il tuo biglietto
+                </h2>
+                <h4 class="fs-4 mb-4">
+                    Dettagli passeggeri
+                </h4>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="card w-75 mb-3 bg-body-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">Nome passeggero</h5>
+                            <p id="pFullName" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card w-75 mb-3 bg-primary-subtle">
+                        <div class="card-body">
+                            <h5 class="card-title">Offerta</h5>
+                            <p id="pOfferta" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card w-75 mb-3 bg-primary-subtle">
+                        <div class="card-body">
+                            <h5 class="card-title">Costo Biglietto</h5>
+                            <p id="pCostoBiglietto" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card w-75 mb-3 bg-danger-subtle">
+                        <div class="card-body">
+                            <h5 class="card-title">Carrozza</h5>
+                            <p id="pCarrozza" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card w-75 mb-3 bg-danger-subtle">
+                        <div class="card-body">
+                            <h5 class="card-title">Codice CP</h5>
+                            <p id="pCodiceId" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!--JAVASCRIPT-->
     <script type="text/javascript" src="js/scripts.js"></script>
 
 </body>
+
 </html>
