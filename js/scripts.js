@@ -1,57 +1,9 @@
-//Scrivere un programma che chieda all'utente:
-//- Il numero di chilometri da percorrere
-//- Età del passeggero
-//Sulla base di queste informazioni dovrà calcolare il prezzo totale del biglietto di viaggio, secondo le seguenti regole:
-//- il prezzo del biglietto è definito in base ai km (0.21 € al km)
-//- va applicato uno sconto del 20% per i minorenni
-//- va applicato uno sconto del 40% per gli over 65.
+const prezzoKm = 0.21; //VARIABILE PRINCIPALE
+
+const formEl = document.querySelector('form'); //VARIABILE CHE PRENDE TUTTO IL FORM
 
 
-//VARIABILI PRINCIPALI
-
-
-
-
-const prezzoKm = 0.21;
-
-const formEl = document.querySelector('form');
-
-
-
-
-//CALCOLI PER PREZZO BIGLIETTO NORMALE, UNDER E OVER 65.
-
-/* let prezzoBiglietto = numeroKm * prezzoKm; 
-console.log('Prezzo Biglietto', prezzoBiglietto);
-
-let scontoMinorenni = ((prezzoBiglietto * 20) / 100);
-let prezzoBigliettoMinorenni = scontoMinorenni - prezzoBiglietto;
-console.log('Prezzo minorenni', prezzoBigliettoMinorenni);
-
-
-let scontoOver65 = ((prezzoBiglietto * 40) / 100);
-let prezzoBigliettoOver65 = scontoOver65 - prezzoBiglietto;
-console.log('Prezzo Over 65', prezzoBigliettoOver65); */
-
-// VARIANTI
-
-/* if (isNaN (numeroKm) || isNaN (etaPasseggero)){
-    console.log('Errore, inserire un numero!');
-}
-
-
-if(etaPasseggero <18){
-    console.log('prezzoBigliettoMinorenni', prezzoBigliettoMinorenni);
-}
-else if(etaPasseggero >65){
-    console.log('prezzoBigliettoOver65', prezzoBigliettoOver65);
-}
-else{
-    console.log('Prezzo totale biglietto', prezzoBiglietto);{
-    }
-    console.log('Operazione corretta!'); */
-/* } */
-
+//INSERIMENTO LET IN TUTTE LE VOCI CHE COMPONGONO LA SEZIONE "IL MIO BIGLIETTO"
 let pFullName = document.getElementById('pFullName');
 let pOfferta = document.getElementById('pOfferta');
 let pCostoBiglietto = document.getElementById('pCostoBiglietto');
@@ -59,37 +11,41 @@ let pCarrozza = document.getElementById('pCarrozza');
 let pCodiceId = document.getElementById('pCodiceId');
 
 
-
-formEl.addEventListener('submit', function (e) {
+formEl.addEventListener('submit', function (e) { //PER AGGANCIARE una funzione che sarà chiamata quando accade un evento
     e.preventDefault();
+
+    //CREO LET E DO IL VALORE AI 3 CAMPI PRINCIPALI CHE DANNO L'INPUT (NOME-NUMERO KM-ETA')
     let fullNameValue = document.getElementById('fullName').value;
-    let numeroKm = document.getElementById('km').value;
-    let etaPasseggero = document.getElementById('selectEta').value;
+    let numeroKm = document.getElementById('numeroKm').value;
+    let etaPasseggero = document.getElementById ('etaPasseggero').value;
+
+
     let prezzoBigliettoTot;
-    let prezzoBiglietto = numeroKm * prezzoKm;
-    if (etaPasseggero == 1) {
-        let scontoMinorenni = ((prezzoBiglietto * 100) / 20);
-        prezzoBigliettoTot = scontoMinorenni - prezzoBiglietto;
-        pOfferta.innerHTML = "offerta minorenne";
-        pCostoBiglietto.innerHTML = prezzoBigliettoTot.toFixed(2);;
+    let prezzoBiglietto = prezzoKm * numeroKm;
+
+
+    if (etaPasseggero == 1){ //UGUAGLIANZA
+        let scontoMinorenni = ((prezzoBiglietto * 20) / 100);
+        let prezzoBigliettoTot = scontoMinorenni - prezzoBiglietto;
+        pOfferta.innerHTML = 'tariffa minorenni'; //VADO A INSERIRE QUESTO TESTO ALL'INTERNO DELLA SEZIONE OFFERTA
+        pCostoBiglietto.innerHTML = prezzoBigliettoTot.toFixed(2); //VADO A INSERIRE IL PREZZO TOTALE ALLA SEZIONE COSTO BIGLIETTO
     }
-    else if (etaPasseggero == 2) {
-        prezzoBigliettoTot = prezzoBiglietto;
-        pOfferta.innerHTML = "offerta maggiorenne";
-        pCostoBiglietto.innerHTML = prezzoBigliettoTot;
+    else if (etaPasseggero == 2){
+        let prezzoBigliettoTot = prezzoKm * numeroKm;
+        pOfferta.innerHTML = 'tariffa maggiorenni';
+        pCostoBiglietto.innerHTML = prezzoBigliettoTot.toFixed(2); //TO FIXED MI ARROTONDA IL NUMERO
     }
-    else {
-        let scontoOver65 = ((prezzoBiglietto * 100) / 40);
-        prezzoBigliettoTot = scontoOver65 - prezzoBiglietto;
-        pOfferta.innerHTML = "offerta over65";
+    else{
+        let scontoOver65 = ((prezzoBiglietto * 40) / 100);
+        let prezzoBigliettoTot = scontoOver65 - prezzoBiglietto;
+        pOfferta.innerHTML = 'tariffa over 65';
         pCostoBiglietto.innerHTML = prezzoBigliettoTot.toFixed(2);
     }
-
-    pFullName.innerHTML = fullNameValue;
-    pCarrozza.innerHTML = Math.floor(Math.random() * 11);
-    pCodiceId.innerHTML = Math.floor(Math.random() * 10000);
-
+    
+    pFullName.innerHTML = fullNameValue; // QUESTO SERVE PER INSERIRE IN AUTOMATICO NOME E COGNOME
+    
+    //DARE NUMERI RANDOM ALLE SEZIONI
+    document.getElementById("pCarrozza").innerHTML = Math.floor(Math.random('pCarrozza') * 10); 
+    document.getElementById("pCodiceId").innerHTML = Math.floor(Math.random('pCodiceId') * 10000);
 })
-
-
 
